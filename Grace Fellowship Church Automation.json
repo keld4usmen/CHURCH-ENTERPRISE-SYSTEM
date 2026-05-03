@@ -1,0 +1,608 @@
+{
+  "name": "FOUNDATION OF TRUTH ASSEMBLY",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                5
+              ],
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "id": "c9045df6-71b0-4011-a74c-4508eae24bc6",
+      "name": "Weekly Event Reminder Schedule",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        240,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "events",
+              "value": [
+                {
+                  "title": "Sunday Worship Service",
+                  "date": "Every Sunday",
+                  "description": "Join us for worship, teaching, and community.",
+                  "location": "Sanctuary"
+                },
+                {
+                  "title": "Youth Bible Study",
+                  "date": "Wednesday, 7:00 PM",
+                  "description": "Bible study for middle school and high school students.",
+                  "location": "Youth Room"
+                },
+                {
+                  "title": "Community Outreach Day",
+                  "date": "Third Saturday of each month",
+                  "description": "Volunteer with local service projects and neighborhood support.",
+                  "location": "Church parking lot"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "id": "2",
+              "name": "churchName",
+              "value": "Grace Fellowship Church",
+              "type": "string"
+            },
+            {
+              "id": "3",
+              "name": "emailSubject",
+              "value": "Upcoming Events This Week",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6fd3bd2d-b525-4f10-a9d9-4891b9ad7975",
+      "name": "Prepare Event Reminders",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        464,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "studioadventur@gmail.com",
+        "subject": "={{ $json.emailSubject }}",
+        "message": "=<h2>{{ $json.churchName }} - Upcoming Events</h2>\n<p>Here are the events happening this week:</p>\n<ul>\n{% for event in $json.events %}\n<li><strong>{{ event.title }}</strong> - {{ event.date }}<br>{{ event.description }}<br>Location: {{ event.location }}</li>\n{% endfor %}\n</ul>\n<p>We look forward to seeing you!</p>",
+        "options": {}
+      },
+      "id": "3127370d-c71b-4be9-8f5d-ed1ce5f0b2bf",
+      "name": "Send Event Reminders",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        688,
+        208
+      ],
+      "webhookId": "d3b359c5-5a5c-4bc5-9447-40ed5309dee0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "2FZZdQ1j3dUEY19C",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "id": "f38b7582-c4c9-4ce4-9852-dc6b327308a0",
+      "name": "Monthly Department Update Schedule",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        240,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "departments",
+              "value": [
+                {
+                  "name": "Worship",
+                  "lead": "John Carter",
+                  "email": "worship@gracefellowship.org"
+                },
+                {
+                  "name": "Children",
+                  "lead": "Anna Simmons",
+                  "email": "children@gracefellowship.org"
+                },
+                {
+                  "name": "Outreach",
+                  "lead": "Marcus Lee",
+                  "email": "outreach@gracefellowship.org"
+                },
+                {
+                  "name": "Media",
+                  "lead": "Sara Kim",
+                  "email": "media@gracefellowship.org"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "id": "2",
+              "name": "churchName",
+              "value": "Grace Fellowship Church",
+              "type": "string"
+            },
+            {
+              "id": "3",
+              "name": "currentMonth",
+              "value": "={{ $now.toFormat(\"MMMM yyyy\") }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0a8ece06-418e-45d5-b719-20dd42a5a35b",
+      "name": "Prepare Department Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        464,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.departments[0].name }}",
+                    "rightValue": "Worship",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Worship"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.departments[1].name }}",
+                    "rightValue": "Children",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Children"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.departments[2].name }}",
+                    "rightValue": "Outreach",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Outreach"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.departments[3].name }}",
+                    "rightValue": "Media",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Media"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3940cc35-bc1e-4a8e-8c38-0fe54639ebc2",
+      "name": "Route to Departments",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        688,
+        688
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.departments[0].email }}",
+        "subject": "={{ $json.churchName }} - Worship Department Update - {{ $json.currentMonth }}",
+        "message": "=<h2>Worship Department Monthly Update</h2>\n<p>Dear {{ $json.departments[0].lead }},</p>\n<p>This is your monthly update for the Worship department.</p>\n<p>Please review upcoming service schedules and coordinate with your team.</p>\n<p>Blessings,<br>{{ $json.churchName }}</p>",
+        "options": {}
+      },
+      "id": "97dd1070-a977-4072-a922-a3d32d459ea3",
+      "name": "Email Worship Department",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        912,
+        432
+      ],
+      "webhookId": "853c5949-b6e5-4e4e-a1ca-d829ea1364bb",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "MAwPDvpsdPJ3t9xM",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.departments[1].email }}",
+        "subject": "={{ $json.churchName }} - Children Department Update - {{ $json.currentMonth }}",
+        "message": "=<h2>Children Department Monthly Update</h2>\n<p>Dear {{ $json.departments[1].lead }},</p>\n<p>This is your monthly update for the Children department.</p>\n<p>Please review upcoming programs and volunteer schedules.</p>\n<p>Blessings,<br>{{ $json.churchName }}</p>",
+        "options": {}
+      },
+      "id": "f216758c-fbf9-47d8-9d2b-2799c0db8b6b",
+      "name": "Email Children Department",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        912,
+        624
+      ],
+      "webhookId": "278f165f-f34c-4d08-b6b9-6ad49e54135a",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "MAwPDvpsdPJ3t9xM",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.departments[2].email }}",
+        "subject": "={{ $json.churchName }} - Outreach Department Update - {{ $json.currentMonth }}",
+        "message": "=<h2>Outreach Department Monthly Update</h2>\n<p>Dear {{ $json.departments[2].lead }},</p>\n<p>This is your monthly update for the Outreach department.</p>\n<p>Please review upcoming community service projects.</p>\n<p>Blessings,<br>{{ $json.churchName }}</p>",
+        "options": {}
+      },
+      "id": "c14c217a-9f77-47c4-9437-26396ff34f46",
+      "name": "Email Outreach Department",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        912,
+        816
+      ],
+      "webhookId": "795eac49-02ab-4ea6-8a92-412acfa80e47",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "MAwPDvpsdPJ3t9xM",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.departments[3].email }}",
+        "subject": "={{ $json.churchName }} - Media Department Update - {{ $json.currentMonth }}",
+        "message": "=<h2>Media Department Monthly Update</h2>\n<p>Dear {{ $json.departments[3].lead }},</p>\n<p>This is your monthly update for the Media department.</p>\n<p>Please review upcoming service recordings and streaming schedules.</p>\n<p>Blessings,<br>{{ $json.churchName }}</p>",
+        "options": {}
+      },
+      "id": "7a2a6010-ade4-4b4e-bab8-df5f91b0a1a1",
+      "name": "Email Media Department",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        912,
+        1008
+      ],
+      "webhookId": "6f476efa-718c-4f7e-94a4-b4892f76577d",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "MAwPDvpsdPJ3t9xM",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {
+          "inputPlaceholder": "Type your question here...",
+          "loadPreviousSession": "memory",
+          "showWelcomeScreen": true,
+          "getStarted": "How can I help you today?",
+          "subtitle": "Ask me anything about our church, services, events, or policies.",
+          "title": "={{ \"Welcome to Grace Fellowship Church!\" }}",
+          "responseMode": "streaming"
+        }
+      },
+      "id": "e955caef-23ea-440f-84bf-af59af8c7351",
+      "name": "Church FAQ Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        240,
+        1344
+      ],
+      "webhookId": "e47f7c37-8207-47ce-9bf5-52b40ce16ade"
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "id": "0e8af14b-51ba-4bf0-9b44-3de9ee5dca05",
+      "name": "Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        320,
+        1568
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "You are a helpful assistant for Grace Fellowship Church.\n\nCHURCH INFORMATION:\nName: Grace Fellowship Church\nMission: To love God, love people, and make disciples.\nVision: A welcoming community transformed by Christ.\nLocation: 123 Faith Avenue, Springfield\nPhone: (555) 123-4567\nEmail: info@gracefellowship.org\nOffice Hours: Mon-Fri, 9:00 AM - 5:00 PM\n\nSERVICE TIMES:\n- Sunday: 8:00 AM and 10:30 AM\n- Wednesday: 7:00 PM\n\nDEPARTMENTS:\n- Worship (Lead: John Carter, Email: worship@gracefellowship.org)\n- Children (Lead: Anna Simmons, Email: children@gracefellowship.org)\n- Outreach (Lead: Marcus Lee, Email: outreach@gracefellowship.org)\n- Media (Lead: Sara Kim, Email: media@gracefellowship.org)\n\nUPCOMING EVENTS:\n1. Sunday Worship Service - Every Sunday - Join us for worship, teaching, and community. (Sanctuary)\n2. Youth Bible Study - Wednesday, 7:00 PM - Bible study for middle school and high school students. (Youth Room)\n3. Community Outreach Day - Third Saturday of each month - Volunteer with local service projects. (Church parking lot)\n\nPOLICIES:\n- Visitor Safety Policy: All volunteers must wear identification badges and complete a brief safety orientation.\n- Staff Leave Request: Staff should submit leave requests at least two weeks in advance using the staff portal.\n\nAnswer questions warmly and accurately based on this information. If asked about something not covered here, politely suggest contacting the church office."
+        }
+      },
+      "id": "55ed51b3-bc5b-459a-8950-2f893eb2c12a",
+      "name": "Church FAQ Assistant",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        592,
+        1344
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-5-mini"
+        },
+        "builtInTools": {},
+        "options": {
+          "temperature": 0.3
+        }
+      },
+      "id": "22c81f7d-91cc-4d26-aed0-a86c5c47e222",
+      "name": "OpenAI GPT-5 Mini",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        608,
+        1568
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "j6uJfJQ1P7RG4jbx",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "id": "8cd28317-f65c-4fd4-ae53-6e7303dcaf12",
+      "name": "Agent Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        736,
+        1568
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Weekly Event Reminder Schedule": {
+      "main": [
+        [
+          {
+            "node": "Prepare Event Reminders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Event Reminders": {
+      "main": [
+        [
+          {
+            "node": "Send Event Reminders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Monthly Department Update Schedule": {
+      "main": [
+        [
+          {
+            "node": "Prepare Department Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Department Data": {
+      "main": [
+        [
+          {
+            "node": "Route to Departments",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route to Departments": {
+      "main": [
+        [
+          {
+            "node": "Email Worship Department",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Email Children Department",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Email Outreach Department",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Email Media Department",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Church FAQ Chat": {
+      "main": [
+        [
+          {
+            "node": "Church FAQ Assistant",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Church FAQ Chat",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI GPT-5 Mini": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Church FAQ Assistant",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Church FAQ Assistant",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "ce365181-8cf8-47e0-b5a9-bd2e608196a9",
+  "meta": {
+    "instanceId": "84f900c7aa0434e07a1702b5f4cb331349e9c227b63e116a3c13b4565ba5b263"
+  },
+  "id": "4wVLUiTDCxP19oA0",
+  "tags": []
+}

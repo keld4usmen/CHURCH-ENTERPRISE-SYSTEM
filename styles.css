@@ -1,0 +1,163 @@
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --border: #d9e2ef;
+  --text: #1f2937;
+  --muted: #5b6b7a;
+  --primary: #2b6cb0;
+  --accent: #38a169;
+  --error: #e53e3e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  background: linear-gradient(180deg, #eef4fb 0%, #f9fcff 100%);
+  color: var(--text);
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  padding: 24px;
+  border-right: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.brand p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.panel {
+  margin-top: 24px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #fbfdff;
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+.panel button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 12px;
+  background: var(--primary);
+  color: white;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.panel button:hover {
+  background: #1d4f91;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 26px;
+}
+
+.header {
+  padding: 18px 20px;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.header h2 {
+  margin: 0;
+}
+
+.chat-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow-y: auto;
+  min-height: 420px;
+}
+
+.message {
+  max-width: 740px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+}
+
+.bot-message {
+  background: #f0f6ff;
+  align-self: flex-start;
+}
+
+.user-message {
+  background: #e6fffa;
+  align-self: flex-end;
+}
+
+.message-label {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.input-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+}
+
+.input-form input {
+  width: 100%;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  font-size: 1rem;
+}
+
+.input-form button {
+  border: none;
+  border-radius: 16px;
+  padding: 0 22px;
+  background: var(--accent);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}

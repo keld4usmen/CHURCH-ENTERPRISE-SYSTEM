@@ -1,0 +1,74 @@
+{
+  "church": {
+    "name": "Foundation of Truth Assembly",
+    "mission": "RAISING GODLY PEOPLE.",
+    "vision": "A faithful family rooted in scripture and compassion.",
+    "location": "40/42 IMAM DAUDA STREET OFF ERIC MOORE SURULERE",
+    "contact": {
+      "phone": "+2348102860931",
+      "email": "KELD4USMEN@GMAIL.COM",
+      "officeHours": "Mon-Fri, 9:00 AM - 5:00 PM"
+    },
+    "serviceTimes": [
+      {"day": "Sunday", "times": ["8:00 AM", "10:30 AM"]},
+      {"day": "Wednesday", "times": ["7:00 PM"]}
+    ]
+  },
+  "departments": [
+    {"name": "Worship", "lead": "John Carter", "email": "worship@gracefellowship.org"},
+    {"name": "Children", "lead": "Anna Simmons", "email": "children@gracefellowship.org"},
+    {"name": "Outreach", "lead": "Marcus Lee", "email": "outreach@gracefellowship.org"},
+    {"name": "Media", "lead": "Sara Kim", "email": "media@gracefellowship.org"}
+  ],
+  "events": [
+    {
+      "title": "Sunday Worship Service",
+      "date": "Every Sunday",
+      "description": "Join us for worship, teaching, and community.",
+      "location": "Sanctuary"
+    },
+    {
+      "title": "Youth Bible Study",
+      "date": "Wednesday, 7:00 PM",
+      "description": "Bible study for middle school and high school students.",
+      "location": "Youth Room"
+    },
+    {
+      "title": "Community Outreach Day",
+      "date": "Third Saturday of each month",
+      "description": "Volunteer with local service projects and neighborhood support.",
+      "location": "Church parking lot"
+    }
+  ],
+  "policies": [
+    {
+      "title": "Visitor Safety Policy",
+      "summary": "All volunteers must wear identification badges and complete a brief safety orientation.",
+      "link": "https://example.org/policies/visitor-safety"
+    },
+    {
+      "title": "Staff Leave Request",
+      "summary": "Staff should submit leave requests at least two weeks in advance using the staff portal.",
+      "link": "https://example.org/policies/staff-leave"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What are the service times?",
+      "answer": "Sunday services are at 8:00 AM and 10:30 AM, and midweek service is at 7:00 PM on Wednesday."
+    },
+    {
+      "question": "Where is the church located?",
+      "answer": "The church is located at 123 Faith Avenue, Springfield."
+    },
+    {
+      "question": "How can I contact the church office?",
+      "answer": "Call (555) 123-4567 or email info@gracefellowship.org."
+    }
+  ],
+  "roles": {
+    "admin": ["Send emails", "View analytics", "Manage events"],
+    "staff": ["Ask questions", "Request actions", "Review announcements"],
+    "member": ["Ask questions", "View service details", "Browse events"]
+  }
+}

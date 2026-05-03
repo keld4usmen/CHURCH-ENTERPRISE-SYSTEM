@@ -1,0 +1,41 @@
+{
+  "info": {
+    "name": "FOTA Chat Webhook",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Thunder Client / Postman collection for the FOTA n8n chat webhook."
+  },
+  "item": [
+    {
+      "name": "Send Chat Message",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": \"guest\",\n  \"message\": \"What time is Sunday service?\"\n}"
+        },
+        "url": {
+          "raw": "https://yikkyman.app.n8n.cloud/webhook/5e73495e-c736-4aae-ac04-3dc8eab8322e/chat",
+          "protocol": "https",
+          "host": [
+            "yikkyman",
+            "app",
+            "n8n",
+            "cloud"
+          ],
+          "path": [
+            "webhook",
+            "e47f7c37-8207-47ce-9bf5-52b40ce16ade",
+            "chat"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
