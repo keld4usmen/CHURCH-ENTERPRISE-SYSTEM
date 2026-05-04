@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import churchData from './data/church_data.json';
 import logo from './assets/fota-logo.svg';
 
-const WEBHOOK_URL = 'https://yikkyman.app.n8n.cloud/webhook/5e73495e-c736-4aae-ac04-3dc8eab8322e/chat';
+const API_HOST = import.meta.env.VITE_API_URL || '';
+const CHAT_API = API_HOST ? `${API_HOST}/api/chat` : '/api/chat';
 const initialBotMessage = 'Welcome! Ask about service times, departments, events, policies, or church contact details.';
 
 const Answer = ({ html }) => (
@@ -18,18 +19,109 @@ const App = () => {
   const [theme, setTheme] = useState('light');
   const [isSending, setIsSending] = useState(false);
   const [webhookError, setWebhookError] = useState(null);
-
-  useEffect(() => {
-    setData(churchData);
-  }, []);
+  const [isListening, setIsListening] = useState(false);
+  const [speechSupported, setSpeechSupported] = useState(false);
+  const [voiceOutputEnabled] = useState(true);
+  const recognitionRef = useRef(null);
 
   const appendMessage = (text, type = 'bot') => {
     setMessages((current) => [...current, { type, text }]);
   };
 
+  const speakText = (text) => {
+    if (!voiceOutputEnabled || typeof window === 'undefined' || !('speechSynthesis' in window) || !text) {
+      return;
+    }
+
+    const sanitized = text.replace(/<[^>]+>/g, ' ');
+    const utterance = new SpeechSynthesisUtterance(sanitized);
+    const voices = window.speechSynthesis.getVoices();
+    utterance.voice = voices.find((voice) => voice.lang.startsWith('en')) || voices[0] || null;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
+  };
+
+  const sendMessage = async (question) => {
+    if (!question.trim()) return;
+
+    appendMessage(question, 'user');
+    setInput('');
+    setIsSending(true);
+
+    const webhookReply = await sendChatToWebhook(question);
+    if (webhookReply) {
+      appendMessage(webhookReply, 'bot');
+      speakText(webhookReply);
+    } else if (data) {
+      const answer = answerFromData(question);
+      appendMessage(answer, 'bot');
+      if (webhookError) {
+        appendMessage(`Webhook fallback active: ${webhookError}`, 'bot');
+      }
+      speakText(answer);
+    } else {
+      const fallback = 'Unable to reach the chat webhook or load local data.';
+      appendMessage(fallback, 'bot');
+      speakText(fallback);
+    }
+
+    setIsSending(false);
+  };
+
+  const sendVoiceMessage = async (transcript) => {
+    setInput(transcript);
+    await sendMessage(transcript);
+  };
+
+  const handleStartListening = () => {
+    if (!recognitionRef.current) return;
+
+    if (isListening) {
+      recognitionRef.current.stop();
+      return;
+    }
+
+    try {
+      recognitionRef.current.start();
+      setIsListening(true);
+    } catch (error) {
+      console.error('Voice recognition failed to start:', error);
+      appendMessage('Voice recognition could not start. Please try again or use text input.', 'bot');
+      setIsListening(false);
+    }
+  };
+
+  useEffect(() => {
+    setData(churchData);
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      setSpeechSupported(true);
+      recognitionRef.current = new SpeechRecognition();
+      recognitionRef.current.continuous = false;
+      recognitionRef.current.interimResults = false;
+      recognitionRef.current.lang = 'en-US';
+      recognitionRef.current.onresult = async (event) => {
+        const transcript = Array.from(event.results)
+          .map((result) => result[0].transcript)
+          .join('');
+        setIsListening(false);
+        await sendVoiceMessage(transcript);
+      };
+      recognitionRef.current.onend = () => {
+        setIsListening(false);
+      };
+      recognitionRef.current.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+        setIsListening(false);
+        appendMessage(`Voice recognition failed: ${event.error}`, 'bot');
+      };
+    }
+  }, []);
+
   const sendChatToWebhook = async (message) => {
     try {
-      const response = await fetch(WEBHOOK_URL, {
+      const response = await fetch(CHAT_API, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -53,7 +145,7 @@ const App = () => {
         return text;
       }
     } catch (error) {
-      const errorMessage = `Webhook request failed: ${error.message}. Please check your network and webhook settings.`;
+      const errorMessage = `Webhook request failed: ${error.message}. Please check your network and webhook settings, and verify that the n8n workflow is active.`;
       setWebhookError(errorMessage);
       console.error('Webhook error:', error);
       return null;
@@ -121,25 +213,7 @@ const App = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!input.trim() || isSending) return;
-
-    const question = input.trim();
-    appendMessage(question, 'user');
-    setInput('');
-    setIsSending(true);
-
-    const webhookReply = await sendChatToWebhook(question);
-    if (webhookReply) {
-      appendMessage(webhookReply, 'bot');
-    } else if (data) {
-      appendMessage(answerFromData(question), 'bot');
-      if (webhookError) {
-        appendMessage(`Webhook fallback active: ${webhookError}`, 'bot');
-      }
-    } else {
-      appendMessage('Unable to reach the chat webhook or load local data.', 'bot');
-    }
-
-    setIsSending(false);
+    await sendMessage(input.trim());
   };
 
   const handleQuickAction = (action) => {
@@ -240,6 +314,17 @@ const App = () => {
             autoComplete="off"
             disabled={isSending}
           />
+          {speechSupported && (
+            <button
+              type="button"
+              className={`mic-button ${isListening ? 'listening' : ''}`}
+              onClick={handleStartListening}
+              disabled={isSending}
+              title={isListening ? 'Stop listening' : 'Speak to the chatbot'}
+            >
+              {isListening ? 'Listening…' : '🎙️'}
+            </button>
+          )}
           <button type="submit" disabled={isSending}>
             {isSending ? 'Sending...' : 'Send'}
           </button>

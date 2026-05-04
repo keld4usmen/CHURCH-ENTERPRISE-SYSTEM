@@ -207,8 +207,9 @@ button {
 
 .input-form {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto auto;
   gap: 12px;
+  align-items: center;
 }
 
 .input-form input {
@@ -219,6 +220,27 @@ button {
   font-size: 1rem;
   background: var(--surface);
   color: var(--text);
+}
+
+.input-form .mic-button {
+  border: none;
+  border-radius: 16px;
+  padding: 0 18px;
+  min-width: 54px;
+  height: 56px;
+  background: var(--surface-alt);
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.input-form .mic-button:hover {
+  background: var(--surface);
+}
+
+.input-form .mic-button.listening {
+  background: var(--accent);
+  color: #ffffff;
 }
 
 .input-form input:disabled {

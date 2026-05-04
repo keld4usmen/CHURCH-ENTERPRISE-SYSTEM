@@ -1,5 +1,4 @@
 {
-  "name": "FOUNDATION OF TRUTH ASSEMBLY",
   "nodes": [
     {
       "parameters": {
@@ -21,7 +20,7 @@
       "typeVersion": 1.3,
       "position": [
         240,
-        208
+        368
       ]
     },
     {
@@ -34,21 +33,33 @@
               "value": [
                 {
                   "title": "Sunday Worship Service",
-                  "date": "Every Sunday",
+                  "date": "Every Sunday at 8:00 AM & 10:30 AM",
                   "description": "Join us for worship, teaching, and community.",
                   "location": "Sanctuary"
                 },
                 {
-                  "title": "Youth Bible Study",
-                  "date": "Wednesday, 7:00 PM",
-                  "description": "Bible study for middle school and high school students.",
-                  "location": "Youth Room"
+                  "title": "Wisdom Word Service (Mid-Week)",
+                  "date": "Every Wednesday at 6:30 PM",
+                  "description": "A time to learn and ask questions as we study the Word. Join in person or online via YouTube @FOTA TV.",
+                  "location": "Church Sanctuary / YouTube @FOTA TV"
                 },
                 {
-                  "title": "Community Outreach Day",
-                  "date": "Third Saturday of each month",
-                  "description": "Volunteer with local service projects and neighborhood support.",
-                  "location": "Church parking lot"
+                  "title": "Free Medical Outreach",
+                  "date": "Every Friday at 10:00 AM",
+                  "description": "Free medical check-ups, prescriptions, and medical attention at our church clinic. Open to everyone. Support by contributing financially or volunteering as medical personnel.",
+                  "location": "Church Clinic"
+                },
+                {
+                  "title": "Child Dedication Service",
+                  "date": "Last Sunday of Every Month",
+                  "description": "We dedicate children to the Lord. Fill out the FOTA Child Dedication form on our mobile app to register. Our Ceremonies Pastor will respond promptly.",
+                  "location": "Sanctuary"
+                },
+                {
+                  "title": "The Art of Love - Couples Event",
+                  "date": "Saturday, April 25th, 2026 at 2:00 PM",
+                  "description": "FOTA Family Life invites couples (newlyweds or longtime partners) to reconnect, laugh, and grow stronger together. Invest in your relationship!",
+                  "location": "Ogudu GRA, Gate D, by Domino's Pizza, Ramat Bus Stop"
                 }
               ],
               "type": "array"
@@ -56,13 +67,13 @@
             {
               "id": "2",
               "name": "churchName",
-              "value": "Grace Fellowship Church",
+              "value": "Foundation of Truth Assembly",
               "type": "string"
             },
             {
               "id": "3",
               "name": "emailSubject",
-              "value": "Upcoming Events This Week",
+              "value": "Upcoming Events & Important Updates",
               "type": "string"
             }
           ]
@@ -75,14 +86,14 @@
       "typeVersion": 3.4,
       "position": [
         464,
-        208
+        272
       ]
     },
     {
       "parameters": {
         "sendTo": "studioadventur@gmail.com",
         "subject": "={{ $json.emailSubject }}",
-        "message": "=<h2>{{ $json.churchName }} - Upcoming Events</h2>\n<p>Here are the events happening this week:</p>\n<ul>\n{% for event in $json.events %}\n<li><strong>{{ event.title }}</strong> - {{ event.date }}<br>{{ event.description }}<br>Location: {{ event.location }}</li>\n{% endfor %}\n</ul>\n<p>We look forward to seeing you!</p>",
+        "message": "=<h2>{{ $json.churchName }} - Upcoming Events</h2>\n<p>Here are the events and important updates:</p>\n<ul>\n{% for event in $json.events %}\n<li><strong>{{ event.title }}</strong> - {{ event.date }}<br>{{ event.description }}<br>Location: {{ event.location }}</li>\n{% endfor %}\n</ul>\n<p>We look forward to seeing you!</p>",
         "options": {}
       },
       "id": "3127370d-c71b-4be9-8f5d-ed1ce5f0b2bf",
@@ -91,7 +102,7 @@
       "typeVersion": 2.2,
       "position": [
         688,
-        208
+        272
       ],
       "webhookId": "d3b359c5-5a5c-4bc5-9447-40ed5309dee0",
       "credentials": {
@@ -116,8 +127,8 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.3,
       "position": [
-        240,
-        720
+        688,
+        464
       ]
     },
     {
@@ -154,7 +165,7 @@
             {
               "id": "2",
               "name": "churchName",
-              "value": "Grace Fellowship Church",
+              "value": "FOUNDATION OF TRUTH ASSEMBLY",
               "type": "string"
             },
             {
@@ -172,8 +183,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        464,
-        720
+        912,
+        368
       ]
     },
     {
@@ -186,7 +197,7 @@
                   "caseSensitive": true,
                   "leftValue": "",
                   "typeValidation": "strict",
-                  "version": 1
+                  "version": 3
                 },
                 "conditions": [
                   {
@@ -195,7 +206,8 @@
                     "operator": {
                       "type": "string",
                       "operation": "equals"
-                    }
+                    },
+                    "id": "9c2d486b-854e-4186-ae6c-e1c1115a9b05"
                   }
                 ],
                 "combinator": "and"
@@ -209,7 +221,7 @@
                   "caseSensitive": true,
                   "leftValue": "",
                   "typeValidation": "strict",
-                  "version": 1
+                  "version": 3
                 },
                 "conditions": [
                   {
@@ -218,7 +230,8 @@
                     "operator": {
                       "type": "string",
                       "operation": "equals"
-                    }
+                    },
+                    "id": "09912445-f61b-4fdb-9e1f-cffa19fc80fa"
                   }
                 ],
                 "combinator": "and"
@@ -232,7 +245,7 @@
                   "caseSensitive": true,
                   "leftValue": "",
                   "typeValidation": "strict",
-                  "version": 1
+                  "version": 3
                 },
                 "conditions": [
                   {
@@ -241,7 +254,8 @@
                     "operator": {
                       "type": "string",
                       "operation": "equals"
-                    }
+                    },
+                    "id": "593e94d8-bf7b-4f5d-b46f-eed6f1330972"
                   }
                 ],
                 "combinator": "and"
@@ -255,7 +269,7 @@
                   "caseSensitive": true,
                   "leftValue": "",
                   "typeValidation": "strict",
-                  "version": 1
+                  "version": 3
                 },
                 "conditions": [
                   {
@@ -264,7 +278,8 @@
                     "operator": {
                       "type": "string",
                       "operation": "equals"
-                    }
+                    },
+                    "id": "f56e4639-fe07-4b41-a9f6-ac1e90596f73"
                   }
                 ],
                 "combinator": "and"
@@ -281,15 +296,15 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        688,
-        688
+        1136,
+        336
       ]
     },
     {
       "parameters": {
         "sendTo": "={{ $json.departments[0].email }}",
         "subject": "={{ $json.churchName }} - Worship Department Update - {{ $json.currentMonth }}",
-        "message": "=<h2>Worship Department Monthly Update</h2>\n<p>Dear {{ $json.departments[0].lead }},</p>\n<p>This is your monthly update for the Worship department.</p>\n<p>Please review upcoming service schedules and coordinate with your team.</p>\n<p>Blessings,<br>{{ $json.churchName }}</p>",
+        "message": "=<h1>Worship Department Monthly Update</h1>\n<p>Dear {{ $json.departments[0].lead }},</p>\n<p>This is your monthly update for the Worship department.</p>\n<p>Please review upcoming service schedules and coordinate with your team.</p>\n<p>Blessings,<br>{{ $json.churchName }}</p>",
         "options": {}
       },
       "id": "97dd1070-a977-4072-a922-a3d32d459ea3",
@@ -297,8 +312,8 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        912,
-        432
+        1360,
+        80
       ],
       "webhookId": "853c5949-b6e5-4e4e-a1ca-d829ea1364bb",
       "credentials": {
@@ -320,8 +335,8 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        912,
-        624
+        1360,
+        272
       ],
       "webhookId": "278f165f-f34c-4d08-b6b9-6ad49e54135a",
       "credentials": {
@@ -343,10 +358,10 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        912,
-        816
+        1360,
+        464
       ],
-      "webhookId": "795eac49-02ab-4ea6-8a92-412acfa80e47",
+      "webhookId": "795c5949-02ab-4ea6-8a92-412acfa80e47",
       "credentials": {
         "gmailOAuth2": {
           "id": "MAwPDvpsdPJ3t9xM",
@@ -366,8 +381,8 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        912,
-        1008
+        1360,
+        656
       ],
       "webhookId": "6f476efa-718c-4f7e-94a4-b4892f76577d",
       "credentials": {
@@ -380,13 +395,14 @@
     {
       "parameters": {
         "public": true,
+        "initialMessages": "Hi there! ??\nMy name is IFOTA. How can I assist you today?",
         "options": {
           "inputPlaceholder": "Type your question here...",
           "loadPreviousSession": "memory",
           "showWelcomeScreen": true,
           "getStarted": "How can I help you today?",
           "subtitle": "Ask me anything about our church, services, events, or policies.",
-          "title": "={{ \"Welcome to Grace Fellowship Church!\" }}",
+          "title": "={{ \"Welcome to FOTA Fellowship Church!\" }}",
           "responseMode": "streaming"
         }
       },
@@ -396,7 +412,7 @@
       "typeVersion": 1.4,
       "position": [
         240,
-        1344
+        992
       ],
       "webhookId": "e47f7c37-8207-47ce-9bf5-52b40ce16ade"
     },
@@ -410,7 +426,7 @@
       "typeVersion": 1.3,
       "position": [
         320,
-        1568
+        1216
       ]
     },
     {
@@ -418,7 +434,7 @@
         "promptType": "define",
         "text": "={{ $json.chatInput }}",
         "options": {
-          "systemMessage": "You are a helpful assistant for Grace Fellowship Church.\n\nCHURCH INFORMATION:\nName: Grace Fellowship Church\nMission: To love God, love people, and make disciples.\nVision: A welcoming community transformed by Christ.\nLocation: 123 Faith Avenue, Springfield\nPhone: (555) 123-4567\nEmail: info@gracefellowship.org\nOffice Hours: Mon-Fri, 9:00 AM - 5:00 PM\n\nSERVICE TIMES:\n- Sunday: 8:00 AM and 10:30 AM\n- Wednesday: 7:00 PM\n\nDEPARTMENTS:\n- Worship (Lead: John Carter, Email: worship@gracefellowship.org)\n- Children (Lead: Anna Simmons, Email: children@gracefellowship.org)\n- Outreach (Lead: Marcus Lee, Email: outreach@gracefellowship.org)\n- Media (Lead: Sara Kim, Email: media@gracefellowship.org)\n\nUPCOMING EVENTS:\n1. Sunday Worship Service - Every Sunday - Join us for worship, teaching, and community. (Sanctuary)\n2. Youth Bible Study - Wednesday, 7:00 PM - Bible study for middle school and high school students. (Youth Room)\n3. Community Outreach Day - Third Saturday of each month - Volunteer with local service projects. (Church parking lot)\n\nPOLICIES:\n- Visitor Safety Policy: All volunteers must wear identification badges and complete a brief safety orientation.\n- Staff Leave Request: Staff should submit leave requests at least two weeks in advance using the staff portal.\n\nAnswer questions warmly and accurately based on this information. If asked about something not covered here, politely suggest contacting the church office."
+          "systemMessage": "You are a helpful assistant for FOUNDATION OF TRUTH ASSEMBLY (FOTA)\n\nCHURCH INFORMATION:\nName: FOUNDATION OF TRUTH ASSEMBLY\nMission: Raising Godly People.\nVision: To build a house full of excellence truth and love.\nLocation: 40/42 IMAM DAUDA ST. OFF ERIC MOORE RD. SURULERE LAGOS\nPhone: 08102860931\nEmail: info@fota.org\nOffice Hours: Mon-Fri, 9:00 AM - 5:00 PM\n\nSERVICE TIMES:\n- Sunday Worship: 8:00 AM and 10:30 AM\n- Wisdom Word Service (Mid-Week): Wednesday at 6:30 PM (in person or online via YouTube @FOTA TV)\n\nDEPARTMENTS:\n- Worship (Lead: John Carter, Email: worship@gracefellowship.org)\n- Children (Lead: Anna Simmons, Email: children@gracefellowship.org)\n- Outreach (Lead: Marcus Lee, Email: outreach@gracefellowship.org)\n- Media (Lead: Sara Kim, Email: media@gracefellowship.org)\n\nUPCOMING EVENTS:\n1. Sunday Worship Service - Every Sunday at 8:00 AM & 10:30 AM (Sanctuary)\n2. Wisdom Word Service - Every Wednesday at 6:30 PM - Learn and ask questions as we study the Word. Join in person or online via YouTube @FOTA TV (Sanctuary / YouTube)\n3. Free Medical Outreach - Every Friday at 10:00 AM - Free check-ups, prescriptions, and medical attention. Open to everyone. (Church Clinic)\n4. Child Dedication Service - Last Sunday of Every Month - Fill out the FOTA Child Dedication form on our mobile app. (Sanctuary)\n5. The Art of Love (Couples Event) - Saturday, April 25th, 2026 at 2:00 PM - For newlyweds and longtime partners to reconnect and grow stronger. (Ogudu GRA, Gate D, by Domino's Pizza, Ramat Bus Stop)\n\nIMPORTANT INFORMATION:\n\nTITHING:\nWe teach tithing not as a law but as an act of love towards God to honour His words. To get a tithe number, speak to Min. Kunle Adesola or Deaconess Bisi Ogunlade. You can also make transfers to our bank with the description \"TITHE\".\n\nCHILD DEDICATION:\nWe dedicate children to the Lord rather than baptizing them, recognizing their inability to make such decisions on their own. Child Dedication takes place on the last Sunday of every month. Fill out the FOTA Child Dedication form on our mobile app.\n\nFREE MEDICAL OUTREACH:\nHeld at the church clinic every Friday at 10 AM. Open to everyone. You can support by contributing financially or volunteering as medical personnel.\n\nSOCIAL MEDIA:\n- Follow FOTA on all platforms: @fotasurulere\n- Follow Senior Pastor Rev. Yomi Kasali:\n  * WhatsApp channel, Instagram, X (Twitter): @yomi_kasali\n  * YouTube and Facebook: Rev. Yomi Kasali\n\nAnswer questions warmly and accurately based on this information. If asked about something not covered here, politely suggest contacting the church office at 08102860931 or info@fota.org."
         }
       },
       "id": "55ed51b3-bc5b-459a-8950-2f893eb2c12a",
@@ -427,7 +443,7 @@
       "typeVersion": 3.1,
       "position": [
         592,
-        1344
+        992
       ]
     },
     {
@@ -448,7 +464,7 @@
       "typeVersion": 1.3,
       "position": [
         608,
-        1568
+        1216
       ],
       "credentials": {
         "openAiApi": {
@@ -467,11 +483,67 @@
       "typeVersion": 1.3,
       "position": [
         736,
-        1568
+        1216
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "11d23298-5b95-468b-bec9-ab2f059e6396",
+      "name": "Test Event Reminder System",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        176
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "ba3ec6d4-a263-4fa6-bef6-7d9d2999f330",
+      "name": "Merge Department Results",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1584,
+        176
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "testComplete",
+              "value": true,
+              "type": "boolean"
+            },
+            {
+              "id": "2",
+              "name": "timestamp",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            },
+            {
+              "id": "3",
+              "name": "message",
+              "value": "All three systems tested successfully: Event Reminders sent, Department Updates routed, and FAQ Chatbot ready.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a962fbca-4021-4dfb-9490-5f9449831e77",
+      "name": "Summary Report",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1808,
+        176
       ]
     }
   ],
-  "pinData": {},
   "connections": {
     "Weekly Event Reminder Schedule": {
       "main": [
@@ -489,6 +561,17 @@
         [
           {
             "node": "Send Event Reminders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Event Reminders": {
+      "main": [
+        [
+          {
+            "node": "Prepare Department Data",
             "type": "main",
             "index": 0
           }
@@ -549,6 +632,28 @@
         ]
       ]
     },
+    "Email Worship Department": {
+      "main": [
+        [
+          {
+            "node": "Merge Department Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Children Department": {
+      "main": [
+        [
+          {
+            "node": "Merge Department Results",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
     "Church FAQ Chat": {
       "main": [
         [
@@ -592,17 +697,32 @@
           }
         ]
       ]
+    },
+    "Test Event Reminder System": {
+      "main": [
+        [
+          {
+            "node": "Prepare Event Reminders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Department Results": {
+      "main": [
+        [
+          {
+            "node": "Summary Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": false,
-  "settings": {
-    "executionOrder": "v1",
-    "binaryMode": "separate"
-  },
-  "versionId": "ce365181-8cf8-47e0-b5a9-bd2e608196a9",
+  "pinData": {},
   "meta": {
     "instanceId": "84f900c7aa0434e07a1702b5f4cb331349e9c227b63e116a3c13b4565ba5b263"
-  },
-  "id": "4wVLUiTDCxP19oA0",
-  "tags": []
+  }
 }

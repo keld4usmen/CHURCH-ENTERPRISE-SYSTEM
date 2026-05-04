@@ -20,7 +20,7 @@
           "raw": "{\n  \"userId\": \"guest\",\n  \"message\": \"What time is Sunday service?\"\n}"
         },
         "url": {
-          "raw": "https://yikkyman.app.n8n.cloud/webhook/5e73495e-c736-4aae-ac04-3dc8eab8322e/chat",
+          "raw": "https://yikkyman.app.n8n.cloud/webhook/e47f7c37-8207-47ce-9bf5-52b40ce16ade",
           "protocol": "https",
           "host": [
             "yikkyman",
@@ -30,8 +30,7 @@
           ],
           "path": [
             "webhook",
-            "e47f7c37-8207-47ce-9bf5-52b40ce16ade",
-            "chat"
+            "e47f7c37-8207-47ce-9bf5-52b40ce16ade"
           ]
         }
       },

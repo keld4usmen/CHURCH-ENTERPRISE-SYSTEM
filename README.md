@@ -49,7 +49,7 @@ Available endpoints:
 
 ## Webhook integration
 This UI now sends chat messages to the configured n8n webhook URL:
-`https://yikkyman.app.n8n.cloud/webhook/5e73495e-c736-4aae-ac04-3dc8eab8322e/chat`
+`https://yikkyman.app.n8n.cloud/webhook/e47f7c37-8207-47ce-9bf5-52b40ce16ade`
 
 If you receive a 404 webhook error, make sure the n8n workflow is active. In n8n, activate the workflow using the toggle in the editor's top-right corner.
 

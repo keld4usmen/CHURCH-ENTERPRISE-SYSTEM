@@ -30,6 +30,8 @@ app.get('/api/notifications', async (req, res) => {
   }
 });
 
+const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || 'https://yikkyman.app.n8n.cloud/webhook/e47f7c37-8207-47ce-9bf5-52b40ce16ade';
+
 app.post('/api/inquiry', async (req, res) => {
   try {
     const db = await dbPromise;
@@ -40,6 +42,37 @@ app.post('/api/inquiry', async (req, res) => {
 
     const inquiry = await addInquiry(db, { name, email, department, subject, message });
     res.json({ success: true, inquiry });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.post('/api/chat', async (req, res) => {
+  try {
+    const { message, userId = 'guest' } = req.body;
+    if (!message) {
+      return res.status(400).json({ error: 'message is required' });
+    }
+
+    const response = await fetch(N8N_WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ userId, message })
+    });
+
+    const text = await response.text();
+    if (!response.ok) {
+      return res.status(response.status).json({ error: text || response.statusText });
+    }
+
+    try {
+      const json = JSON.parse(text);
+      return res.json(json);
+    } catch {
+      return res.json({ response: text });
+    }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
