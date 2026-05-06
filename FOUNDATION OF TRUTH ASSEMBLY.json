@@ -1,4 +1,5 @@
 {
+  "name": "FOUNDATION OF TRUTH ASSEMBLY",
   "nodes": [
     {
       "parameters": {
@@ -361,7 +362,7 @@
         1360,
         464
       ],
-      "webhookId": "795c5949-02ab-4ea6-8a92-412acfa80e47",
+      "webhookId": "795eac49-02ab-4ea6-8a92-412acfa80e47",
       "credentials": {
         "gmailOAuth2": {
           "id": "MAwPDvpsdPJ3t9xM",
@@ -395,14 +396,14 @@
     {
       "parameters": {
         "public": true,
-        "initialMessages": "Hi there! ??\nMy name is IFOTA. How can I assist you today?",
+        "initialMessages": "Hi there! 👋\nMy name is IFOTA. How can I assist you today?",
         "options": {
           "inputPlaceholder": "Type your question here...",
           "loadPreviousSession": "memory",
           "showWelcomeScreen": true,
           "getStarted": "How can I help you today?",
           "subtitle": "Ask me anything about our church, services, events, or policies.",
-          "title": "={{ \"Welcome to FOTA Fellowship Church!\" }}",
+          "title": "Welcome to FOTA Fellowship Church!",
           "responseMode": "streaming"
         }
       },
@@ -434,7 +435,7 @@
         "promptType": "define",
         "text": "={{ $json.chatInput }}",
         "options": {
-          "systemMessage": "You are a helpful assistant for FOUNDATION OF TRUTH ASSEMBLY (FOTA)\n\nCHURCH INFORMATION:\nName: FOUNDATION OF TRUTH ASSEMBLY\nMission: Raising Godly People.\nVision: To build a house full of excellence truth and love.\nLocation: 40/42 IMAM DAUDA ST. OFF ERIC MOORE RD. SURULERE LAGOS\nPhone: 08102860931\nEmail: info@fota.org\nOffice Hours: Mon-Fri, 9:00 AM - 5:00 PM\n\nSERVICE TIMES:\n- Sunday Worship: 8:00 AM and 10:30 AM\n- Wisdom Word Service (Mid-Week): Wednesday at 6:30 PM (in person or online via YouTube @FOTA TV)\n\nDEPARTMENTS:\n- Worship (Lead: John Carter, Email: worship@gracefellowship.org)\n- Children (Lead: Anna Simmons, Email: children@gracefellowship.org)\n- Outreach (Lead: Marcus Lee, Email: outreach@gracefellowship.org)\n- Media (Lead: Sara Kim, Email: media@gracefellowship.org)\n\nUPCOMING EVENTS:\n1. Sunday Worship Service - Every Sunday at 8:00 AM & 10:30 AM (Sanctuary)\n2. Wisdom Word Service - Every Wednesday at 6:30 PM - Learn and ask questions as we study the Word. Join in person or online via YouTube @FOTA TV (Sanctuary / YouTube)\n3. Free Medical Outreach - Every Friday at 10:00 AM - Free check-ups, prescriptions, and medical attention. Open to everyone. (Church Clinic)\n4. Child Dedication Service - Last Sunday of Every Month - Fill out the FOTA Child Dedication form on our mobile app. (Sanctuary)\n5. The Art of Love (Couples Event) - Saturday, April 25th, 2026 at 2:00 PM - For newlyweds and longtime partners to reconnect and grow stronger. (Ogudu GRA, Gate D, by Domino's Pizza, Ramat Bus Stop)\n\nIMPORTANT INFORMATION:\n\nTITHING:\nWe teach tithing not as a law but as an act of love towards God to honour His words. To get a tithe number, speak to Min. Kunle Adesola or Deaconess Bisi Ogunlade. You can also make transfers to our bank with the description \"TITHE\".\n\nCHILD DEDICATION:\nWe dedicate children to the Lord rather than baptizing them, recognizing their inability to make such decisions on their own. Child Dedication takes place on the last Sunday of every month. Fill out the FOTA Child Dedication form on our mobile app.\n\nFREE MEDICAL OUTREACH:\nHeld at the church clinic every Friday at 10 AM. Open to everyone. You can support by contributing financially or volunteering as medical personnel.\n\nSOCIAL MEDIA:\n- Follow FOTA on all platforms: @fotasurulere\n- Follow Senior Pastor Rev. Yomi Kasali:\n  * WhatsApp channel, Instagram, X (Twitter): @yomi_kasali\n  * YouTube and Facebook: Rev. Yomi Kasali\n\nAnswer questions warmly and accurately based on this information. If asked about something not covered here, politely suggest contacting the church office at 08102860931 or info@fota.org."
+          "systemMessage": "You are a helpful assistant for FOUNDATION OF TRUTH ASSEMBLY (FOTA)\n\nCHURCH INFORMATION:\nName: FOUNDATION OF TRUTH ASSEMBLY\nMission: Raising Godly People.\nVision: To build a house full of excellence truth and love.\nLocation: 40/42 IMAM DAUDA ST. OFF ERIC MOORE RD. SURULERE LAGOS\nPhone: 08102860931\nEmail: info@fota.org\nOffice Hours: Mon-Fri, 9:00 AM - 5:00 PM\n\nSERVICE TIMES:\n- Sunday Worship: 8:00 AM and 10:30 AM\n- Wisdom Word Service (Mid-Week): Wednesday at 6:30 PM (in person or online via YouTube @FOTA TV)\n\nDEPARTMENTS:\n- Worship (Lead: John Carter, Email: worship@gracefellowship.org)\n- Children (Lead: Anna Simmons, Email: children@gracefellowship.org)\n- Outreach (Lead: Marcus Lee, Email: outreach@gracefellowship.org)\n- Media (Lead: Sara Kim, Email: media@gracefellowship.org)\n\nUPCOMING EVENTS:\n1. Sunday Worship Service - Every Sunday at 8:00 AM & 10:30 AM (Sanctuary)\n2. Wisdom Word Service - Every Wednesday at 6:30 PM - Learn and ask questions as we study the Word. Join in person or online via YouTube @FOTA TV (Sanctuary / YouTube)\n3. Free Medical Outreach - Every Friday at 10:00 AM - Free check-ups, prescriptions, and medical attention. Open to everyone. (Church Clinic)\n4. Child Dedication Service - Last Sunday of Every Month - Fill out the FOTA Child Dedication form on our mobile app. (Sanctuary)\n5. The Art of Love (Couples Event) - Saturday, April 25th, 2026 at 2:00 PM - For newlyweds and longtime partners to reconnect and grow stronger. (Ogudu GRA, Gate D, by Domino's Pizza, Ramat Bus Stop)\n\nIMPORTANT INFORMATION:\n\nTITHING:\nWe teach tithing not as a law but as an act of love towards God to honour His words. To get a tithe number, speak to Min. Kunle Adesola or Deaconess Bisi Ogunlade. You can also make transfers to our bank with the description \"TITHE\".\n\nCHILD DEDICATION:\nWe dedicate children to the Lord rather than baptizing them, recognizing their inability to make such decisions on their own. Child Dedication takes place on the last Sunday of every month. Fill out the FOTA Child Dedication form on our mobile app.\n\nFREE MEDICAL OUTREACH:\nHeld at the church clinic every Friday at 10 AM. Open to everyone. You can support by contributing financially or volunteering as medical personnel.\n\nSOCIAL MEDIA:\n- Follow FOTA on all platforms: @fotasurulere\n- Follow Senior Pastor Rev. Yomi Kasali:\n  * WhatsApp channel, Instagram, X (Twitter): @yomi_kasali\n  * YouTube and Facebook: Rev. Yomi Kasali\n\nAnswer questions warmly and accurately based on this information. If asked about something not covered here, politely suggest contacting the church office at 08102860931 or info@fota.org. ER"
         }
       },
       "id": "55ed51b3-bc5b-459a-8950-2f893eb2c12a",
@@ -445,33 +446,6 @@
         592,
         992
       ]
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "mode": "list",
-          "value": "gpt-5-mini"
-        },
-        "builtInTools": {},
-        "options": {
-          "temperature": 0.3
-        }
-      },
-      "id": "22c81f7d-91cc-4d26-aed0-a86c5c47e222",
-      "name": "OpenAI GPT-5 Mini",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.3,
-      "position": [
-        608,
-        1216
-      ],
-      "credentials": {
-        "openAiApi": {
-          "id": "j6uJfJQ1P7RG4jbx",
-          "name": "n8n free OpenAI API credits"
-        }
-      }
     },
     {
       "parameters": {
@@ -542,8 +516,34 @@
         1808,
         176
       ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "id": "49224c3d-d981-4e96-a1cb-c4acc9ef1948",
+      "name": "OpenAI GPT-4o Mini",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        608,
+        1216
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "j6uJfJQ1P7RG4jbx",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
     }
   ],
+  "pinData": {},
   "connections": {
     "Weekly Event Reminder Schedule": {
       "main": [
@@ -561,17 +561,6 @@
         [
           {
             "node": "Send Event Reminders",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Send Event Reminders": {
-      "main": [
-        [
-          {
-            "node": "Prepare Department Data",
             "type": "main",
             "index": 0
           }
@@ -632,28 +621,6 @@
         ]
       ]
     },
-    "Email Worship Department": {
-      "main": [
-        [
-          {
-            "node": "Merge Department Results",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Email Children Department": {
-      "main": [
-        [
-          {
-            "node": "Merge Department Results",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
     "Church FAQ Chat": {
       "main": [
         [
@@ -671,17 +638,6 @@
           {
             "node": "Church FAQ Chat",
             "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI GPT-5 Mini": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Church FAQ Assistant",
-            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -709,6 +665,28 @@
         ]
       ]
     },
+    "Email Worship Department": {
+      "main": [
+        [
+          {
+            "node": "Merge Department Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Event Reminders": {
+      "main": [
+        [
+          {
+            "node": "Prepare Department Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Merge Department Results": {
       "main": [
         [
@@ -719,10 +697,39 @@
           }
         ]
       ]
+    },
+    "Email Children Department": {
+      "main": [
+        [
+          {
+            "node": "Merge Department Results",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "OpenAI GPT-4o Mini": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Church FAQ Assistant",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "83649dc9-9e5d-4033-a6c9-9689a28b1e73",
   "meta": {
     "instanceId": "84f900c7aa0434e07a1702b5f4cb331349e9c227b63e116a3c13b4565ba5b263"
-  }
+  },
+  "id": "4wVLUiTDCxP19oA0",
+  "tags": []
 }
