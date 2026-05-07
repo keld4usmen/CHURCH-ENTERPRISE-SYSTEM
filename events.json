@@ -1,48 +1,4 @@
-{
-  "church": {
-    "name": "Foundation of Truth Assembly",
-    "mission": "Raising Godly People.",
-    "vision": "To build a house full of excellence truth and love.",
-    "location": "40/42 IMAM DAUDA ST. OFF ERIC MOORE RD. SURULERE LAGOS",
-    "contact": {
-      "phone": "08102860931",
-      "email": "info@fota.org",
-      "officeHours": "Mon-Fri, 9:00 AM - 5:00 PM"
-    },
-    "serviceTimes": [
-      {
-        "day": "Sunday",
-        "times": ["8:00 AM", "10:30 AM"]
-      },
-      {
-        "day": "Wednesday",
-        "times": ["6:30 PM"]
-      }
-    ]
-  },
-  "departments": [
-    {
-      "name": "Worship",
-      "lead": "John Carter",
-      "email": "worship@gracefellowship.org"
-    },
-    {
-      "name": "Children",
-      "lead": "Anna Simmons",
-      "email": "children@gracefellowship.org"
-    },
-    {
-      "name": "Outreach",
-      "lead": "Marcus Lee",
-      "email": "outreach@gracefellowship.org"
-    },
-    {
-      "name": "Media",
-      "lead": "Sara Kim",
-      "email": "media@gracefellowship.org"
-    }
-  ],
-  "events": [
+[
   {
     "title": "New Year's Day",
     "date": "January 1, 2026 (Thu)",
@@ -709,40 +665,4 @@
     "description": "",
     "location": "Foundation of Truth Assembly"
   }
-],
-  "policies": [
-    {
-      "title": "Tithing",
-      "summary": "Tithing is taught as an act of love toward God and not as a law. Speak to church leaders to receive a tithe number or give using the description 'TITHE'.",
-      "link": ""
-    },
-    {
-      "title": "Child Dedication",
-      "summary": "Child Dedication takes place on the last Sunday of every month. Complete the FOTA Child Dedication form in the mobile app.",
-      "link": ""
-    },
-    {
-      "title": "Free Medical Outreach",
-      "summary": "Held every Friday at 10:00 AM in the church clinic. Open to everyone and supported by volunteers and financial donations.",
-      "link": ""
-    }
-  ],
-  "faqs": [
-    {
-      "question": "What are the service times?",
-      "answer": "Sunday Worship is at 8:00 AM and 10:30 AM, and Wisdom Word Service meets every Wednesday at 6:30 PM."
-    },
-    {
-      "question": "Where is the church located?",
-      "answer": "Foundation of Truth Assembly is at 40/42 IMAM DAUDA ST. OFF ERIC MOORE RD. SURULERE LAGOS."
-    },
-    {
-      "question": "How can I contact the church office?",
-      "answer": "Call 08102860931 or email info@fota.org."
-    },
-    {
-      "question": "How do I register for child dedication?",
-      "answer": "Complete the FOTA Child Dedication form in the mobile app and our Ceremonies Pastor will respond promptly."
-    }
-  ]
-}
+]
